@@ -7,6 +7,7 @@ import { auth } from "./lib/auth";
 import { get_API_DB } from "./config/db";
 import { toNodeHandler } from "better-auth/node";
 import toolRoutes from "./routes/toolRoutes";
+import adminRoutes from "./routes/adminRoutes";
 dotenv.config();
 
 const app = express();
@@ -18,6 +19,7 @@ app.all("/api/auth/*", toNodeHandler(auth));
 app.use(express.json());
 
 app.use("/api/tools", toolRoutes);
+app.use("/api/admin", adminRoutes);
 // if none of the routes are reached from above
 app.use((_req: Request, res: Response) => {
     res.status(404).json({ message: "Route not found" });
