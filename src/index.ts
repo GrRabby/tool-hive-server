@@ -12,10 +12,16 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-app.use(cors());
+app.use(
+    cors({
+        origin: process.env.CLIENT_URL || "http://localhost:3000",
+        credentials: true,
+        exposedHeaders: ["set-auth-token", "set-auth-jwt"],
+    })
+);
 
 
-app.all("/api/auth/*", toNodeHandler(auth));
+app.all("/api/auth/*splat", toNodeHandler(auth));
 app.use(express.json());
 
 app.use("/api/tools", toolRoutes);
@@ -34,6 +40,6 @@ const start =  async():Promise<void> => {
     await get_API_DB();
     app.listen(PORT, () => {
         console.log('Server started')
-    })
+    })  
 }
 start();
