@@ -1,7 +1,7 @@
 import { Router } from "express";
-import { getAllToolsAdmin, getAdminStats } from "../controllers/toolController";
-import { protect } from "../middleware/auth";
-import { isAdmin } from "../middleware/isAdmin";
+import { getAllToolsAdmin, getAdminStats } from "../controllers/toolController.js";
+import { protect } from "../middleware/auth.js";
+import { isAdmin } from "../middleware/isAdmin.js";
 
 const router = Router();
 

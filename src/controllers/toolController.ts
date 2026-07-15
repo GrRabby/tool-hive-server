@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
-import Tool from "../models/Tool";
-import { AuthRequest } from "../middleware/auth";
-import { getUserById, getUsersByIds } from "../utils/getUsers";
+import Tool from "../models/Tool.js";
+import { AuthRequest } from "../middleware/auth.js";
+import { getUserById, getUsersByIds } from "../utils/getUsers.js";
 
 
 export const getTools = async (req: Request, res: Response): Promise<void> => {

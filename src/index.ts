@@ -3,11 +3,11 @@ import express from "express";
 import type { Request, Response, NextFunction } from "express";
 import dotenv from 'dotenv';
 import cors from "cors";
-import { auth } from "./lib/auth";
-import { get_API_DB } from "./config/db";
+import { auth } from "./lib/auth.js";
+import { get_API_DB } from "./config/db.js";
 import { toNodeHandler } from "better-auth/node";
-import toolRoutes from "./routes/toolRoutes";
-import adminRoutes from "./routes/adminRoutes";
+import toolRoutes from "./routes/toolRoutes.js";
+import adminRoutes from "./routes/adminRoutes.js";
 dotenv.config();
 
 const app = express();

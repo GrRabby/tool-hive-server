@@ -1,4 +1,4 @@
-import { getAuthDb } from "../config/db";
+import { getAuthDb } from "../config/db.js";
 
 export interface PublicUser {
   id: string;

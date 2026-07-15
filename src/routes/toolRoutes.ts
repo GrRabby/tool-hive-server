@@ -7,8 +7,8 @@ import {
   getToolById,
   createTool,
   deleteTool,
-} from "../controllers/toolController";
-import { protect } from "../middleware/auth";
+} from "../controllers/toolController.js";
+import { protect } from "../middleware/auth.js";
 
 const router = Router();
 

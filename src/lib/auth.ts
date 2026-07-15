@@ -3,7 +3,7 @@ import { mongodbAdapter } from "better-auth/adapters/mongodb";
 import { admin } from "better-auth/plugins";
 import { bearer } from "better-auth/plugins";
 import { jwt } from "better-auth/plugins";
-import { getAuthDb } from "../config/db"
+import { getAuthDb } from "../config/db.js"
 
 
 export const auth = betterAuth({
