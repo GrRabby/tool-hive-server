@@ -106,7 +106,7 @@ export const getMyTools = async (req: AuthRequest, res: Response): Promise<void>
 };
 
 
-export const getToolById = async (req: AuthRequest, res: Response): Promise<void> => {
+export const getToolById = async (req: Request, res: Response): Promise<void> => {
     try {
         const tool = await Tool.findById(req.params.id);
 
