@@ -3,15 +3,21 @@ import express from "express";
 import type { Request, Response, NextFunction } from "express";
 import dotenv from 'dotenv';
 import cors from "cors";
+import { auth } from "./lib/auth";
 import { get_API_DB } from "./config/db";
+import { toNodeHandler } from "better-auth/node";
+import toolRoutes from "./routes/toolRoutes";
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 app.use(cors());
+
+
+app.all("/api/auth/*", toNodeHandler(auth));
 app.use(express.json());
 
-
+app.use("/api/tools", toolRoutes);
 // if none of the routes are reached from above
 app.use((_req: Request, res: Response) => {
     res.status(404).json({ message: "Route not found" });

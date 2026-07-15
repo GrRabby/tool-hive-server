@@ -1,6 +1,8 @@
 import { betterAuth } from "better-auth";
 import { mongodbAdapter } from "better-auth/adapters/mongodb";
 import { admin } from "better-auth/plugins";
+import { bearer } from "better-auth/plugins";
+import { jwt } from "better-auth/plugins";
 import { getAuthDb } from "../config/db"
 
 
@@ -23,7 +25,22 @@ export const auth = betterAuth({
             secure: true,
         },
     },
-    plugins: [admin()],
+    plugins: [
+        admin(),
+        bearer(),
+        jwt({
+            jwt: {
+                expirationTime: "7d",
+                definePayload: ({ user }) => ({
+                    id: user.id,
+                    email: user.email,
+                    name: user.name,
+                    role: user.role,
+                }),
+            },
+        }),
+
+    ],
 });
 
 export type Session = typeof auth.$Infer.Session;
